@@ -21,7 +21,9 @@ app.get("/signup", (req, res) => {
 app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "login.html"));
 });
-
+app.get("/dashboard", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "dashboard.html"));
+});
 // Initialize Firebase Admin SDK
 firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount),
@@ -66,13 +68,27 @@ app.post("/login", async (req, res) => {
       .signInWithEmailAndPassword(email, password);
 
     const userId = userCredential.user.uid;
-    res.status(200).json({ userId });
+    res.redirect(`/dashboard?userId=${userId}`);
+    // res.status(200).json({ userId });
     // res.redirect("/dashboard");
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
 });
-
+app.get("/api/dashboard", async (req, res) => {
+  const userId = req.query.userId;
+  try {
+    const userDoc = await firestore.collection("users").doc(userId).get();
+    if (userDoc.exists) {
+      const userData = userDoc.data();
+      res.status(200).json({ name: userData.name });
+    } else {
+      res.status(404).json({ error: "User not found" });
+    }
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });

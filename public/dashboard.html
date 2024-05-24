@@ -1,3 +1,4 @@
+<!-- public/dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -6,8 +7,21 @@
     <title>Dashboard</title>
   </head>
   <body>
-    <h1>Welcome to the Dashboard</h1>
-    <div id="userEmail"></div>
-    <script src="./js/dashboard.js" type="module"></script>
+    <h1 id="welcome-message">Welcome</h1>
+    <script>
+      // Get userId from the query string
+      const urlParams = new URLSearchParams(window.location.search);
+      const userId = urlParams.get("userId");
+
+      // Fetch user name from the server and display it
+      fetch(`/api/dashboard?userId=${userId}`)
+        .then((response) => response.json())
+        .then((data) => {
+          document.getElementById(
+            "welcome-message"
+          ).innerText = `Welcome, ${data.name}`;
+        })
+        .catch((error) => console.error("Error:", error));
+    </script>
   </body>
 </html>
