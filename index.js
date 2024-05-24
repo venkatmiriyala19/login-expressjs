@@ -37,13 +37,20 @@ const firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+
+const firestore = firebaseAdmin.firestore();
 // Handle POST request to /signup
 app.post("/signup", async (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, name } = req.body;
   try {
     const userRecord = await firebaseAdmin.auth().createUser({
       email,
       password,
+    });
+    await firestore.collection("users").doc(userRecord.uid).set({
+      email,
+      name,
+      // You can add more user details here if needed
     });
     res.status(201).json({ userId: userRecord.uid });
   } catch (error) {
@@ -65,37 +72,7 @@ app.post("/login", async (req, res) => {
     res.status(400).json({ error: error.message });
   }
 });
-// app.get("/dashboard", (req, res) => {
-//   res.sendFile(path.join(__dirname, "public", "dashboard.html"));
-// });
-// app.get("/dashboard", async (req, res) => {
-//   const userId = req.query.userId;
-//   try {
-//     // Retrieve user data from Firebase Admin SDK
-//     const user = await firebaseAdmin.auth().getUser(userId);
-//     const email = user.email;
-//     res.send(`<h2>Welcome to Dashboard</h2><p>Email: ${email}</p>`);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// });
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
-
-// app.post("/login", async (req, res) => {
-//   const { email, password } = req.body;
-//   try {
-//     const userCredential = await firebase
-//       .auth()
-//       .signInWithEmailAndPassword(email, password);
-//     const userId = userCredential.user.uid;
-//     res.redirect(`/dashboard?userId=${userId}`);
-//   } catch (error) {
-//     res.status(400).json({ error: error.message });
-//   }
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-// });
