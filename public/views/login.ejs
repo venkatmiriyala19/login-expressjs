@@ -4,15 +4,58 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
+    <link rel="stylesheet" href="../css/signup.css" />
+    <script
+      src="https://kit.fontawesome.com/ef195724ff.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <h2>Login</h2>
-    <form id="loginForm" action="/login" method="POST">
-      <label for="email">Email:</label><br />
-      <input type="email" id="email" name="email" required /><br />
-      <label for="password">Password:</label><br />
-      <input type="password" id="password" name="password" required /><br />
-      <button type="submit">Login</button>
-    </form>
+    <div class="outer-container">
+      <div class="inner-container">
+        <h2>Login</h2>
+        <form id="loginForm" action="/login" method="POST">
+          <div style="padding-left: 2.5rem">
+            <div>
+              <label for="email">Email:</label>
+            </div>
+            <div class="input-container">
+              <i
+                class="fa-solid fa-envelope icon"
+                style="width: 20px; height: auto"
+              ></i>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="Enter your Email"
+              />
+            </div>
+            <div><label for="password">Password:</label></div>
+            <div class="input-container">
+              <i class="fa-solid fa-lock icon"></i>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter Your Password"
+              />
+            </div>
+          </div>
+          <div class="submit-btn">
+            <button type="submit">
+              Log in
+              <div class="arrow-wrapper">
+                <div class="arrow"></div>
+              </div>
+            </button>
+          </div>
+          <div class="login-redirect">
+            Need an account? <a href="/signup"> Signup</a>
+          </div>
+        </form>
+      </div>
+    </div>
   </body>
 </html>
