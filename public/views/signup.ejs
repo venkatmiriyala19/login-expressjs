@@ -110,13 +110,17 @@
               },
               body: JSON.stringify({ email, password, name }),
             });
-            const data = await response.json();
-            console.log(data);
+
             if (response.ok) {
-              alert("Signup successful. Click OK to proceed to login.");
-              window.location.href = "/login"; // Redirect to login page
+              const data = await response.json();
+              console.log(data);
+              // Assuming the server responds with the userId
+              const { userId } = data;
+              window.location.href = `/dashboard?userId=${userId}`; // Redirect to dashboard
             } else {
-              alert("Signup failed. Please try again."); // Alert if signup fails
+              // Handle non-successful response (e.g., server error)
+              const errorMessage = await response.text();
+              throw new Error(errorMessage);
             }
           } catch (error) {
             console.error(error);
