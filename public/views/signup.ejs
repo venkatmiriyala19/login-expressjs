@@ -112,6 +112,12 @@
             });
             const data = await response.json();
             console.log(data);
+            if (response.ok) {
+              alert("Signup successful. Click OK to proceed to login.");
+              window.location.href = "/login"; // Redirect to login page
+            } else {
+              alert("Signup failed. Please try again."); // Alert if signup fails
+            }
           } catch (error) {
             console.error(error);
           }
