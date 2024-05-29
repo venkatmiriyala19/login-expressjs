@@ -1,0 +1,29 @@
+@import url("https://fonts.googleapis.com/css2?family=Anta&family=Archivo:ital,wght@0,100..900;1,100..900&family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Cutive&family=Kanit&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Poppins:wght@400;500;700&family=REM:ital,wght@0,100..900;1,100..900&family=Radio+Canada+Big:ital,wght@0,400..700;1,400..700&family=Raleway:ital,wght@0,100..900;1,100..900&family=Special+Elite&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+}
+.outer-container {
+  height: 100vh;
+  /* background-image: url(./Tuyển\ tập\ hình\ nền\ màu\ tím\ cho\ điện\ thoại\,\ smartphone\ siêu\ đẹp;\ _\ Background\ design\,\ Gradient\ background\,\ Background.jpg);
+  transform: rotate(0deg);
+  background-repeat: no-repeat;
+  background-size: cover; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Special Elite", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+button:hover {
+  background-color: aliceblue;
+  color: black;
+}
+a {
+  color: white;
+}
+a:hover {
+  color: black;
+}
