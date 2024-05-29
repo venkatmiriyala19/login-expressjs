@@ -1,4 +1,3 @@
-<!-- public/dashboard.html -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,11 +20,9 @@
       </div>
     </div>
     <script>
-      // Get userId from the query string
       const urlParams = new URLSearchParams(window.location.search);
       const userId = urlParams.get("userId");
 
-      // Fetch user name from the server and display it
       fetch(`/api/dashboard?userId=${userId}`)
         .then((response) => response.json())
         .then((data) => {

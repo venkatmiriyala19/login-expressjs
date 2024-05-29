@@ -114,11 +114,9 @@
             if (response.ok) {
               const data = await response.json();
               console.log(data);
-              // Assuming the server responds with the userId
               const { userId } = data;
-              window.location.href = `/dashboard?userId=${userId}`; // Redirect to dashboard
+              window.location.href = `/dashboard?userId=${userId}`;
             } else {
-              // Handle non-successful response (e.g., server error)
               const errorMessage = await response.text();
               throw new Error(errorMessage);
             }
