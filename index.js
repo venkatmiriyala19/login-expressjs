@@ -33,12 +33,7 @@ firebaseAdmin.initializeApp({
 });
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAMuymXKCQ3qdCc0OoFLAJocB7OJAuqgaA",
-  authDomain: "express-auth-71381.firebaseapp.com",
-  projectId: "express-auth-71381",
-  storageBucket: "express-auth-71381.appspot.com",
-  messagingSenderId: "361663031242",
-  appId: "1:361663031242:web:3010b4e632f20be7719133",
+  
 };
 
 firebase.initializeApp(firebaseConfig);
